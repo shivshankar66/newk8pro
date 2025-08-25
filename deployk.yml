@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: newk81-deploy
+  name: newk813-deploy
 spec:
   replicas: 2
   selector:
@@ -13,8 +13,8 @@ spec:
         app: newk8
     spec:
       containers:
-      - name: newk8-container
-        image: shivam193/deploy:22  # Docker Hub wali image
+      - name: newk81-container
+        image: shivam193/gunnupro1:10 # Docker Hub wali image
         ports:
         - containerPort: 80
 ---
