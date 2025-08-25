@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newk81-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: newk8
+  template:
+    metadata:
+      labels:
+        app: newk8
+    spec:
+      containers:
+      - name: newk8-container
+        image: shivam193/deploy:22  # Docker Hub wali image
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newk8-service
+spec:
+  selector:
+    app: newk8
+  ports:
+  - port: 80        # Cluster service port
+    targetPort: 80  # Container port
+  type: NodePort    # Minikube/local ke liye NodePort; cloud me LoadBalancer use kar
